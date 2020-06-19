@@ -235,7 +235,7 @@ func (c *Client) NewSession(capabilities ...WDASessionCapability) (s *Session, e
 		body.set("capabilities", newWdaBody()) // .set("alwaysMatch", nil))
 	}
 	var wdaResp wdaResponse
-	if wdaResp, err = executePost("NewSession", urlJoin(c.deviceURL, "/session"), body); err != nil {
+	if wdaResp, err = executePost("NewSession", urlJoin(c.deviceURL, "/status"), body); err != nil {
 		return nil, err
 	}
 	if sid := wdaResp.getByPath("sessionId").String(); sid == "" {
