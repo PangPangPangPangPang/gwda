@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	goUSBMux "github.com/electricbubble/go-usbmuxd-device"
 	"io"
 	"io/ioutil"
 	"log"
@@ -14,6 +13,8 @@ import (
 	"path"
 	"regexp"
 	"time"
+
+	goUSBMux "github.com/electricbubble/go-usbmuxd-device"
 
 	"github.com/tidwall/gjson"
 )
@@ -35,8 +36,8 @@ var DefaultWaitTimeout = time.Second * 60
 var DefaultWaitInterval = time.Millisecond * 250
 
 var wdaHeader = map[string]string{
-	"Content-Type": "application/json;charset=UTF-8",
-	"accept":       "application/json",
+	// "Content-Type": "application/json;charset=UTF-8",
+	"accept": "application/json",
 }
 
 // urlJoin fix `path.Join`

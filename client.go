@@ -7,7 +7,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	goUSBMux "github.com/electricbubble/go-usbmuxd-device"
 	"image"
 	_ "image/jpeg"
 	_ "image/png"
@@ -17,6 +16,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	goUSBMux "github.com/electricbubble/go-usbmuxd-device"
 )
 
 type Client struct {
@@ -235,7 +236,7 @@ func (c *Client) NewSession(capabilities ...WDASessionCapability) (s *Session, e
 		body.set("capabilities", newWdaBody()) // .set("alwaysMatch", nil))
 	}
 	var wdaResp wdaResponse
-	if wdaResp, err = executePost("NewSession", urlJoin(c.deviceURL, "/status"), body); err != nil {
+	if wdaResp, err = executePost("NewSession", urlJoin(c.deviceURL, "/session"), body); err != nil {
 		return nil, err
 	}
 	if sid := wdaResp.getByPath("sessionId").String(); sid == "" {

@@ -1,4 +1,4 @@
-module github.com/PangPangPangPangPang/gwda
+module github.com/electricbubble/gwda
 
 go 1.13
 
